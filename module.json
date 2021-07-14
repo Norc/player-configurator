@@ -1,7 +1,7 @@
 {
-  "name": "module",
-  "title": "New Module",
-  "description": "",
+  "name": "player-configurator",
+  "title": "Player Configurator",
+  "description": "Easily set macro hotbars and assign tokens for many players at once.",
   "version": "This is auto replaced",
   "library": "false",
   "manifestPlusVersion": "1.0.0",
@@ -9,9 +9,9 @@
   "compatibleCoreVersion": "0.8.8",
   "authors": [
     {
-      "name": "The League of Extraordinary FVTT Developers",
-      "url": "https://github.com/League-of-Foundry-Developers",
-      "discord": "discordID#0001"
+      "name": "Norc",
+      "url": "https://github.com/Norc",
+      "discord": "discordID#5108"
     }
   ],
   "dependencies": [
@@ -24,7 +24,7 @@
     "/scripts/module.js"
   ],
   "scripts": [
-    "/scripts/lib/lib.js"
+
   ],
   "styles": [
     "/styles/module.css"
