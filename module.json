@@ -11,7 +11,7 @@
     {
       "name": "Norc",
       "url": "https://github.com/Norc",
-      "discord": "discordID#5108"
+      "discord": "Norc#5108"
     }
   ],
   "dependencies": [
@@ -24,7 +24,6 @@
     "/scripts/index.js"
   ],
   "scripts": [
-
   ],
   "styles": [
     "/styles/module.css"
