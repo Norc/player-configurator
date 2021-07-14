@@ -19,23 +19,26 @@ export async function assignActors() {
 //If a player owns exactly one actor, assign that actor to the user.
     console.log("Player Configurator | Assigning actors");
     for (let u in game.users.contents) {
-        if ( !u.isGM && u.data.character ) {
+        console.log(typeof (game.users.contents[u]));
+        if ( typeof (game.users.contents[u]) == "object" ) {
+            console.log("play");
             let player = game.users.contents[u];
-            let ownedActors = game.actors.filter( (actor) => actor.data.permission[player.id] == 3);
-            console.log("Player Configurator | assigning actor")
-            console.log(ownedActors)
-            let obj = {};
-            if ( ownedActors && ownedActors.length === 1 ) {
-                obj['character'] = ownedActors[0].id;
-            } else {
-                if ( ownedActors.length > 1 ) {
-                    ui.notifications.console.warn(`Please ensure that only one actor is assigned to ${player.name}`);
+            if ( ( !u.isGM ) && ( player.data.character === null ) ) {
+                let ownedActors = game.actors.filter( (actor) => actor.data.permission[player.id] == 3);
+                let obj = {};
+                if ( ownedActors && ownedActors.length === 1 ) {
+                    obj['character'] = ownedActors[0].id;
+                } else {
+                    if ( ownedActors.length > 1 ) {
+                        ui.notifications.warn(`Please ensure that only one actor is assigned to ${player.name}`);
+                    }
                 }
+                
+                //update the player with the new properties
+                console.log(`Player Configurator | Assigning ${player} an actor.`);
+                await player.update(obj);
+                console.log(player.data.character);
             }
-            
-            console.log("Player Configurator | Assigning an actor.");
-            //update the player with the new properties
-            await player.update(obj);
         }
     }
 }
