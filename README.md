@@ -16,4 +16,4 @@ The interface of this module is directly in its Module Settings buttons for now.
 
 ## Changelog
 
-Initial reelase for The League of Extraordinary Developers July Package Jam.
+Initial release for The League of Extraordinary Developers July 2021 Package Jam.
