@@ -2,7 +2,7 @@
   "name": "player-configurator",
   "title": "Player Configurator",
   "description": "Easily set macro hotbars and assign tokens for many players at once.",
-  "version": "This is auto replaced",
+  "version": "This is auto-replaced",
   "library": "false",
   "manifestPlusVersion": "1.0.0",
   "minimumCoreVersion": "0.8.8",
@@ -11,7 +11,7 @@
     {
       "name": "Norc",
       "url": "https://github.com/Norc",
-      "discord": "discordID#5108"
+      "discord": "Norc#5108"
     }
   ],
   "dependencies": [
@@ -21,10 +21,9 @@
     
   ],
   "esmodules": [
-    "/scripts/module.js"
+    "/scripts/index.js"
   ],
   "scripts": [
-
   ],
   "styles": [
     "/styles/module.css"
