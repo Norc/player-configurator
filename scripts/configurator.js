@@ -1,28 +1,16 @@
 export async function configHotbars(fUserIds = getUserIds()) {
 //Expects an array of userIds. If none is provided, all user Ids will be used by default instead.
 //copies the active player's macro hotbar to all specified users.
-    let templateHotbar = duplicate(game.users.current.data.hotbar);
+    const newHb = foundry.utils.deepClone(game.users.current.data.hotbar);
     console.log(`Player Configurator | Template hotbar:`);
-    console.log(templateHotbar);
+    console.log(newHb);
     for (const fUId of fUserIds) {
         let fUser = game.users.get(fUId); 
-        const oldHb = duplicate(fUser.data.hotbar);
-        let newHb = {}
-        newHb = duplicate(templateHotbar);
-
-        //clear pre-existing values
-        for (const m in oldHb ){
-            if (oldHb.hasOwnProperty(m) && !newHb.hasOwnProperty(m) ){
-//              This, but different?
-                newHb[`-=${m}`] = null;
-//                newHb[m] -= null;
-            }
-        }
 
         //update the player with the new properties
         console.log(`Player Configurator | Assigning following hotbar to ${fUser.name}:`);
         console.log(newHb);
-        await fUser.update(newHb['hotbar']);
+        await fUser.update({ hotbar: newHb }, { diff: false, recursive: false });
         console.log(`Player Configurator | Result:`);
         console.log(fUser.data.hotbar);
     }
