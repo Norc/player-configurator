@@ -1,14 +1,20 @@
-export async function configHotbars(playerIds = getUserIds()) {
+export async function configHotbars(fUserIds = getUserIds()) {
 //Expects an array of userIds. If none is provided, all user Ids will be used by default instead.
-//copies the active player's macro hotbar to all players.
+//copies the active player's macro hotbar to all specified users.
     let templateHotbar = duplicate(game.users.current.data.hotbar);
-    for (let pId of playerIds) {
-        let player = game.users.get(pId); 
-        let obj = {};            
-        obj['hotbar'] = templateHotbar;
-        
+    console.log(`Player Configurator | Template hotbar:`);
+    console.log(templateHotbar);
+    for (let fUId of fUserIds) {
+        let fUser = game.users.get(fUId); 
+        let obj = {}      
+
         //update the player with the new properties
-        await player.update(obj);
+        obj['hotbar'] = duplicate(templateHotbar);
+        console.log(`Player Configurator | Assigning following hotbar to ${fUser.name}:`);
+        console.log(obj['hotbar']);
+        await fUser.update(obj);
+        console.log(`Player Configurator | Result:`);
+        console.log(fUser.data.hotbar);
     }
 }
  
