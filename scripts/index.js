@@ -8,7 +8,7 @@ Hooks.once('init', async function() {
 Hooks.once('ready', async function() {
     //test ID array: ["GuMMVgoN63m6AgQj"]
     if(game.users.current.isGM) {
-        //await configHotbars();
+        await configHotbars();
         await assignActors();
     }
 });

@@ -4,15 +4,25 @@ export async function configHotbars(fUserIds = getUserIds()) {
     let templateHotbar = duplicate(game.users.current.data.hotbar);
     console.log(`Player Configurator | Template hotbar:`);
     console.log(templateHotbar);
-    for (let fUId of fUserIds) {
+    for (const fUId of fUserIds) {
         let fUser = game.users.get(fUId); 
-        let obj = {}      
+        const oldHb = duplicate(fUser.data.hotbar);
+        let newHb = {}
+        newHb = duplicate(templateHotbar);
+
+        //clear pre-existing values
+        for (const m in oldHb ){
+            if (oldHb.hasOwnProperty(m) && !newHb.hasOwnProperty(m) ){
+//              This, but different?
+                newHb[`-=${m}`] = null;
+//                newHb[m] -= null;
+            }
+        }
 
         //update the player with the new properties
-        obj['hotbar'] = duplicate(templateHotbar);
         console.log(`Player Configurator | Assigning following hotbar to ${fUser.name}:`);
-        console.log(obj['hotbar']);
-        await fUser.update(obj);
+        console.log(newHb);
+        await fUser.update(newHb['hotbar']);
         console.log(`Player Configurator | Result:`);
         console.log(fUser.data.hotbar);
     }
