@@ -19,24 +19,18 @@ Hooks.once('ready', async function() {
         let playDiv = document.getElementById(playDivId).children[0];
         playDiv.addEventListener("contextmenu", (event) => {
             event.preventDefault();
-            const bulkAssignMacros = new Dialog({
-                title: "Please Confirm",
-              content: `Give your macro hotbar to all players?`,
-              buttons: {
-                buttonOk: {
-                  label: "Ok",
-                  callback: () => {ui.notifications.info("You clicked OK!")},
-                  icon: `<i class="fas fa-check"></i>`
+            const bulkAssignMacros = Dialog.confirm({
+              title: "Please Confirm",
+              content: `Give your macro hotbar to all players?<br \><br \>
+              <strong>Caution</strong>: Existing player hotbars will be lost.`,
+              yes: async () => {
+                  await configHotbars();
+                  ui.notifications.info("Player macro hotbars assigned successfully.")
                 },
-                buttonCancel: {
-                  label: "Cancel",
-                  callback: () => {ui.notifications.info("You clicked Cancel!")},
-                  icon: `<i class="fas fa-times"></i>`
-                }
-              }
-            }).render(true);
+              defaultYes: true
+            });
         });
-        //await configHotbars();
+
         //await assignActors();
     }
 });
