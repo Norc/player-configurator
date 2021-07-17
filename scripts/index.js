@@ -1,36 +1,66 @@
 import { configHotbars } from "./configurator.js"
 import { assignActors } from "./configurator.js"
 
-Hooks.once('init', async function() {
-    console.log("Player Configurator | Init");
-});
+//Hooks.once('init', async function() {
+    //console.log("Player Configurator | Init");
+//});
 
-Hooks.once('ready', async function() {
-    const playDivId = "players";
+Hooks.on('renderPlayerList', async function() {
 
     //test ID array: ["GuMMVgoN63m6AgQj"]
     if(game.users.current.isGM) {
         /*  TO DO:
-            1. Add right-click listener to Players row of PlayerList to Bulk Config Players and Bulk Config Macros
-            2. Add right-click listener to own username row to "Load" or "Set" player's macro hotbar.
-            3. As GM, add context menu option to own username row to "Stash" or "Restore" your own macro hotbar
+            1. As GM, add context menu to Players list
+            2. Add current functionality, Assign per player, view/edit per player, and Assigned Character configuration to context menu
+            3. As GM, add context menu option somewhere to "Stash" or "Restore" your own macro hotbar
             4. Add Custom Hotbar support?
+            5. Add player hotbar locking?
         */
-        let playDiv = document.getElementById(playDivId).children[0];
+
+        const playerListDivId = "players";
+        let playDiv = document.getElementById(playerListDivId).children[0];
         playDiv.addEventListener("contextmenu", (event) => {
             event.preventDefault();
             const bulkAssignMacros = Dialog.confirm({
-              title: "Please Confirm",
-              content: `Give your macro hotbar to all players?<br \><br \>
-              <strong>Caution</strong>: Existing player hotbars will be lost.`,
-              yes: async () => {
-                  await configHotbars();
-                  ui.notifications.info("Player macro hotbars assigned successfully.")
-                },
-              defaultYes: true
+                title: "Please Confirm",
+                content: `Give your macro hotbar to all players?<br \><br \>
+                <strong>Caution</strong>: Existing player hotbars will be lost.`,
+                yes: async () => {
+                    await configHotbars();
+                    ui.notifications.info("Player macro hotbars assigned successfully.")
+                    },
+                defaultYes: true
             });
         });
-
-        //await assignActors();
     }
+        /*
+        WIP PLEASE IGNORE
+        playDiv._contextMenu(html);
+        playDiv.id = "play";
+
+        playContextMenu(`${html}`);
+
+        playDiv.addEventListener('contextmenu', (event) => {
+            console.log("Player Configurator | this");
+            console.log(event)
+        });
+
+    //await assignActors();
+    }*/
 });
+
+/*
+WIP PLEASE IGNORE
+function playContextMenu(html) {
+    const playDivContextMenu = new ContextMenu(html, "#play", [
+        {
+            name: "Bulk Assign Macros",
+            icon: '<i class="fas fa-edit"></i>',
+            condition: () => {},
+            callback: li => {
+                ui.notifications.info("Hi!");
+            }
+        }
+    ]);
+}
+*/

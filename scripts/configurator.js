@@ -2,24 +2,25 @@ export async function configHotbars(fUserIds = getUserIds()) {
 //Expects an array of userIds. If none is provided, all user Ids will be used by default instead.
 //copies the active player's macro hotbar to all specified users.
     const newHb = foundry.utils.deepClone(game.users.current.data.hotbar);
-    console.log(`Player Configurator | Template hotbar:`);
-    console.log(newHb);
+    //console.log(`Player Configurator | Template hotbar:`);
+    //console.log(newHb);
     for (const fUId of fUserIds) {
         let fUser = game.users.get(fUId); 
 
         //update the player with the new properties
-        console.log(`Player Configurator | Assigning following hotbar to ${fUser.name}:`);
-        console.log(newHb);
+        //console.log(`Player Configurator | Assigning following hotbar to ${fUser.name}:`);
+        //console.log(newHb);
         await fUser.update({ hotbar: newHb }, { diff: false, recursive: false });
-        console.log(`Player Configurator | Result:`);
-        console.log(fUser.data.hotbar);
+        //console.log(`Player Configurator | Result:`);
+        //console.log(fUser.data.hotbar);
     }
 }
- 
+
+//COMING SOON, NOT YET ACCESSIBLE
 export async function assignActors(playerIds = getPlayerIds()) {
 //Expects an array of playerIds. If none is provided, all player Ids will be used by default instead.
 //If a player owns exactly one actor, assign that actor to the user.
-    console.log("Player Configurator | Assigning actors");
+    //console.log("Player Configurator | Assigning actors");
     let newAssign = false;
     for (let pId of playerIds) {
         let player = game.users.get(pId);
@@ -32,7 +33,7 @@ export async function assignActors(playerIds = getPlayerIds()) {
                     ui.notifications.warn(`${player.name} does not own an actor. Please assign one manually.`);
                 break;
                 case 1:
-                    console.log(`Player Configurator | Assigning ${player} an actor.`);
+                    //console.log(`Player Configurator | Assigning ${player} an actor.`);
                     newAssign = true;
                     obj['character'] = ownedActors[0].id;
                     await player.update(obj);
