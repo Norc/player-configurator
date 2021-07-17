@@ -32,4 +32,4 @@ Boom! All your players (even offline ones) now have that sweet macro hotbar that
 
 ## Changelog
 
-v1.0.3 - Initial public release, inspired by The League of Extraordinary Developers July 2021 Package Jam but sadly entered too late.
+v1.0.4 - Initial public release, inspired by The League of Extraordinary Developers July 2021 Package Jam but sadly entered too late.
