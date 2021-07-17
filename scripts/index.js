@@ -22,12 +22,11 @@ Hooks.on('renderPlayerList', async function() {
         playDiv.addEventListener("contextmenu", (event) => {
             event.preventDefault();
             const bulkAssignMacros = Dialog.confirm({
-                title: "Please Confirm",
-                content: `Give your macro hotbar to all players?<br \><br \>
-                <strong>Caution</strong>: Existing player hotbars will be lost.`,
+                title: game.i18n.localize("player-configurator.bulk-assign-macro.confirm"),
+                content: game.i18n.localize("player-configurator.bulk-assign-macro.caution"),
                 yes: async () => {
                     await configHotbars();
-                    ui.notifications.info("Player macro hotbars assigned successfully.")
+                    ui.notifications.info(game.i18n.localize("player-configurator.bulk-assign-macro.success"))
                     },
                 defaultYes: true
             });

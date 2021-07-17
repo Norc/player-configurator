@@ -1,3 +1,10 @@
 {
-    "MODULE.hello": "hello"
+    "player-configurator": {
+
+        "bulk-assign-macro": {
+            "confirm": "Please Confirm",
+            "caution": "Give your macro hotbar to all players?<br><br><strong>Caution</strong>: Existing player hotbars will be lost.",
+            "success": "Player macro hotbars assigned successfully."
+        }
+    } 
 }
