@@ -20,15 +20,17 @@ With PMC, just set your macro hotbar up the way you wish it was for all players.
 
 ![image](https://user-images.githubusercontent.com/64667579/126040107-f4da9e9c-32d1-4c13-84c5-543ae304e1e6.png)
 
-Boom! All your players (even offline ones) now have that sweet macro hotbar that you created for them.
+**Boom!** All your players (even offline ones) now have that sweet macro hotbar that you created for them.
+**NOTE:** This currently sends all macro hotbar rows. Allowing sending just one at a time is planned soon.
 
 ## Roadmap:
-1. Automatically assign characters to players if they own exactly one Actor (bonus feature!)
-2. Assign the macro hotbar only to selected players
-3. View and edit the macro hotbar of a particular player
-4. Lock player macro hotbars
-5. Saving and restoring your own macro hotbar
-6. Custom hotbar compatibility (https://github.com/Norc/foundry-custom-hotbar).
+1. Add ability to send just one hotbar at a time
+2. Automatically assign characters to players if they own exactly one Actor (bonus feature!)
+3. Assign the macro hotbar only to selected players
+4. View and edit the macro hotbar of a particular player
+5. Lock player macro hotbars
+6. Saving and restoring your own macro hotbar
+7. Custom hotbar compatibility (https://github.com/Norc/foundry-custom-hotbar).
 
 ## Changelog
 
